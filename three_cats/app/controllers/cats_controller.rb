@@ -1,9 +1,18 @@
 class CatsController < ApplicationController
     
     def index
-        #@cats = Cat.all
+        @cats = Cat.all
+        render :index
     end
 
+    def new
+        @cat = Cat.new
+    end
+
+    def show
+        @cat = Cat.find_by(id: params[:id])
+        render :show
+    end
 
 
     private

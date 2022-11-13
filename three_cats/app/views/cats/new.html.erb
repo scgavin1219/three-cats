@@ -1,0 +1,27 @@
+<h1>New Smelly Cat</h1>
+
+
+<form action="<%= cats_url %>" method="POST">
+
+    <label for="name">Name</label>
+    <input type="text" name="cat[name]" value="<%= @cat.name %>" placeholder="name">
+    <br>
+
+    <label for="birth_date">Birthday</label>
+    <input type="text" name="cat[birth_date]" value="<%= @cat.birth_date %>" placeholder="birthday">
+    <br>
+
+    <label for="sex">Sex</label>
+    <input type="text" name="cat[sex]" value="<%= @cat.sex %>" placeholder="sex">
+    <br>
+
+    <label for="color">Color</label>
+    <input type="text" name="cat[color]" value="<%= @cat.color%>" placeholder="color">
+    <br>
+
+    <label for ="description">Description</label>
+    <textarea name="cat[description]" value="<%= @cat.description %>" placeholder="description">
+    </textarea>
+    <br>
+
+    <input type="submit" value="Hit the button">
