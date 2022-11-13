@@ -12,16 +12,21 @@
 #  updated_at  :datetime         not null
 #
 class Cat < ApplicationRecord
-    CAT_COLORS = %w(black, white, spotted, orange, tortoise)
+    include ActionView::Helpers::DateHelper
+
+
+    CAT_COLORS = %w(black white spotted orange tortoise)
     validates :name, :color, :sex, :birth_date, presence: true
     validates :color, inclusion: {in: CAT_COLORS}
     validates :sex, inclusion: { in: %w(f F m M)}
     validate :valid_birth_date
 
-
+    def age
+        Date.today.year - birth_date.year
+    end
 
     def valid_birth_date
-        if birth_date && birth_date < Date.today
+        if birth_date && birth_date > Date.today
             errors.add(:birth_date, "can't be born in the future")
         end
     end
